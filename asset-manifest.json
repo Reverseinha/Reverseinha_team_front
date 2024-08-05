@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/Reverseinha_team_front/static/css/main.c4518412.css",
+    "main.js": "/Reverseinha_team_front/static/js/main.860f26d8.js",
+    "static/js/870.a5679818.chunk.js": "/Reverseinha_team_front/static/js/870.a5679818.chunk.js",
+    "static/media/NotoSansKR-VariableFont_wght.ttf": "/Reverseinha_team_front/static/media/NotoSansKR-VariableFont_wght.33752a94ca5252213de8.ttf",
+    "static/media/homeImg2.jpg": "/Reverseinha_team_front/static/media/homeImg2.509c1a97fb22c2ce458e.jpg",
+    "static/media/Pretendard-Regular.woff": "/Reverseinha_team_front/static/media/Pretendard-Regular.a97abcb6f03db9c6720f.woff",
+    "static/media/DoHyeon-Regular.ttf": "/Reverseinha_team_front/static/media/DoHyeon-Regular.a8b42451c538437b10b4.ttf",
+    "static/media/Roboto-Medium.ttf": "/Reverseinha_team_front/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
+    "static/media/homeImg1.jpg": "/Reverseinha_team_front/static/media/homeImg1.5452a8a44126b20dd625.jpg",
+    "static/media/Roboto-Regular.ttf": "/Reverseinha_team_front/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
+    "static/media/homeImg3.jpg": "/Reverseinha_team_front/static/media/homeImg3.d0422e81497e00005b47.jpg",
+    "static/media/OpenSans-Bold.ttf": "/Reverseinha_team_front/static/media/OpenSans-Bold.c790f99966352c531503.ttf",
+    "static/media/OpenSans-Regular.ttf": "/Reverseinha_team_front/static/media/OpenSans-Regular.b8cc747a58ffa52b7ff9.ttf",
+    "static/media/OpenSans-SemiBold.ttf": "/Reverseinha_team_front/static/media/OpenSans-SemiBold.c7ab78a511011d4e147e.ttf",
+    "static/media/slick.svg": "/Reverseinha_team_front/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/Reverseinha_team_front/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/Reverseinha_team_front/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/Reverseinha_team_front/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/Reverseinha_team_front/index.html",
+    "main.c4518412.css.map": "/Reverseinha_team_front/static/css/main.c4518412.css.map",
+    "main.860f26d8.js.map": "/Reverseinha_team_front/static/js/main.860f26d8.js.map",
+    "870.a5679818.chunk.js.map": "/Reverseinha_team_front/static/js/870.a5679818.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c4518412.css",
+    "static/js/main.860f26d8.js"
+  ]
+}
