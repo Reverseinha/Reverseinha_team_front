@@ -17,11 +17,11 @@ import ConsultationApplication from './pages/Consulting/ConsultationApplication'
 
 const App = () => {
   return (
-    <Router>
+    <Router> {/* 환경 변수 사용 */}
       <Header />
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/Reverseinha_team_front" element={<Home />} />
           <Route path="/consulting" element={<Consulting />} />
           <Route path="/record" element={<Record />} />
           <Route path="/community" element={<Community />} />
