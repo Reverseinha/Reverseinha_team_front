@@ -1,12 +1,15 @@
 {
   "files": {
     "main.css": "/Reverseinha_team_front/static/css/main.b4a48625.css",
-    "main.js": "/Reverseinha_team_front/static/js/main.67990d4f.js",
+    "main.js": "/Reverseinha_team_front/static/js/main.a4058ca2.js",
     "static/js/453.c2b2afdb.chunk.js": "/Reverseinha_team_front/static/js/453.c2b2afdb.chunk.js",
     "static/media/NotoSansKR-VariableFont_wght.ttf": "/Reverseinha_team_front/static/media/NotoSansKR-VariableFont_wght.33752a94ca5252213de8.ttf",
     "static/media/homeImg2.jpg": "/Reverseinha_team_front/static/media/homeImg2.509c1a97fb22c2ce458e.jpg",
     "static/media/Pretendard-Regular.woff": "/Reverseinha_team_front/static/media/Pretendard-Regular.a97abcb6f03db9c6720f.woff",
     "static/media/DoHyeon-Regular.ttf": "/Reverseinha_team_front/static/media/DoHyeon-Regular.a8b42451c538437b10b4.ttf",
+    "static/media/consul5.png": "/Reverseinha_team_front/static/media/consul5.90614ada9bf677f19410.png",
+    "static/media/consul4.png": "/Reverseinha_team_front/static/media/consul4.7ef780f0111f55ef4896.png",
+    "static/media/consul6.png": "/Reverseinha_team_front/static/media/consul6.504d5121a29f19571972.png",
     "static/media/Roboto-Medium.ttf": "/Reverseinha_team_front/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/homeImg1.jpg": "/Reverseinha_team_front/static/media/homeImg1.5452a8a44126b20dd625.jpg",
     "static/media/Roboto-Regular.ttf": "/Reverseinha_team_front/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
@@ -14,17 +17,20 @@
     "static/media/OpenSans-Bold.ttf": "/Reverseinha_team_front/static/media/OpenSans-Bold.c790f99966352c531503.ttf",
     "static/media/OpenSans-Regular.ttf": "/Reverseinha_team_front/static/media/OpenSans-Regular.b8cc747a58ffa52b7ff9.ttf",
     "static/media/OpenSans-SemiBold.ttf": "/Reverseinha_team_front/static/media/OpenSans-SemiBold.c7ab78a511011d4e147e.ttf",
+    "static/media/search3.png": "/Reverseinha_team_front/static/media/search3.d3a5a574ba316d4997a9.png",
+    "static/media/profile.png": "/Reverseinha_team_front/static/media/profile.4d9dadbd7d600606cafc.png",
+    "static/media/consul1.png": "/Reverseinha_team_front/static/media/consul1.580f76194e26e9943e70.png",
     "static/media/slick.svg": "/Reverseinha_team_front/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/Reverseinha_team_front/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/Reverseinha_team_front/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/Reverseinha_team_front/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Reverseinha_team_front/index.html",
     "main.b4a48625.css.map": "/Reverseinha_team_front/static/css/main.b4a48625.css.map",
-    "main.67990d4f.js.map": "/Reverseinha_team_front/static/js/main.67990d4f.js.map",
+    "main.a4058ca2.js.map": "/Reverseinha_team_front/static/js/main.a4058ca2.js.map",
     "453.c2b2afdb.chunk.js.map": "/Reverseinha_team_front/static/js/453.c2b2afdb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b4a48625.css",
-    "static/js/main.67990d4f.js"
+    "static/js/main.a4058ca2.js"
   ]
 }
