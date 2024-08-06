@@ -1,6 +1,7 @@
+// ResultModal.jsx
 import React from 'react';
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Modalbackground = styled.div`
   position: fixed;
@@ -21,10 +22,12 @@ const Modal = styled.div`
   max-width: 500px;
   text-align: center;
 `;
+
 const Scoretitle = styled.div`
   font-size: 25px;
   margin-bottom: 20px;
 `;
+
 const Score = styled.div`
   font-size: 24px;
   margin-bottom: 20px;
@@ -48,41 +51,40 @@ const Message = styled.p`
   }};
 `;
 
-const Linkbutton = styled.a`
+const Linkbutton = styled.button`
   display: inline-block;
   margin: 10px;
   padding: 10px 20px;
   background-color: #004EE5;
   color: white;
-  text-decoration: none;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
 `;
 
 const Footer = styled.div`
-    margin-top: 10px;
-    font-size: 12px;
-    color: gray;
+  margin-top: 10px;
+  font-size: 12px;
+  color: gray;
 `;
 
 const ResultModal = ({ score }) => {
-    const getRiskMessage = () => {
-        if (score >= 70) return '사회적 고립 고위험군에 해당합니다.';
-        if (score >= 40) return '사회적 고립 중위험군에 해당합니다.';
-        if (score <= 30) return '사회적 고립 저위험군에 해당합니다.';
-        return '점수를 다시 확인해 주세요.';
-      };
+  const navigate = useNavigate();
 
-    const Link = styled.a`
-        color: #004EE5;
-        cursor: pointer;
-        text-decoration: none;
-    `;
-    const navigate = useNavigate();
-    const handletextclick = () => {
-        navigate('/retest'); 
-    };
+  const getRiskMessage = () => {
+    if (score >= 70) return '사회적 고립 고위험군에 해당합니다.';
+    if (score >= 40) return '사회적 고립 중위험군에 해당합니다.';
+    if (score <= 30) return '사회적 고립 저위험군에 해당합니다.';
+    return '점수를 다시 확인해 주세요.';
+  };
 
+  const handleTestClick = () => {
+    navigate('/retest'); // Ensure path matches router setup
+  };
+
+  const handleDiaryClick = () => {
+    navigate('/record');
+  };
 
   return (
     <Modalbackground>
@@ -90,12 +92,11 @@ const ResultModal = ({ score }) => {
         <Scoretitle>나의 고립 점수는? </Scoretitle>
         <Score score={score}>{score}점</Score>
         <Message>
-          테스트 결과, {getRiskMessage()} <br/>
-          현재 상태에 맞는 상담/건강 관리 계획을 제공합니다. <br/>
-          다른 테스트도 궁금하다면? <Link onClick={handletextclick}>다른 테스트 구경가기</Link>
-
+          테스트 결과, {getRiskMessage()} <br />
+          현재 상태에 맞는 상담/건강 관리 계획을 제공합니다. <br />
+          다른 테스트도 궁금하다면? <span onClick={handleTestClick} style={{ color: '#004EE5', cursor: 'pointer' }}>다른 테스트 구경가기</span>
         </Message>
-        <Linkbutton href="/record">일기 작성하러 가기</Linkbutton>
+        <Linkbutton onClick={handleDiaryClick}>일기 작성하러 가기</Linkbutton>
         <Footer>긴급전화: 사회적 고립가구 지원센터 전화번호(02-6353-0200)</Footer>
       </Modal>
     </Modalbackground>

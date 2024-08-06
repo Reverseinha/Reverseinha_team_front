@@ -17,7 +17,7 @@ import ConsultationApplication from './pages/Consulting/ConsultationApplication'
 
 const App = () => {
   return (
-    <Router> {/* 환경 변수 사용 */}
+    <Router>
       <Header />
       <main>
         <Routes>
