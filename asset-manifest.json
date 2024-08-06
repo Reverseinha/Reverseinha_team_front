@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Reverseinha_team_front/static/css/main.0ab01ad9.css",
-    "main.js": "/Reverseinha_team_front/static/js/main.4c87d1f6.js",
+    "main.js": "/Reverseinha_team_front/static/js/main.c0d4927c.js",
     "static/js/870.a5679818.chunk.js": "/Reverseinha_team_front/static/js/870.a5679818.chunk.js",
     "static/media/homeImg2.jpg": "/Reverseinha_team_front/static/media/homeImg2.509c1a97fb22c2ce458e.jpg",
     "static/media/Pretendard-Regular.woff": "/Reverseinha_team_front/static/media/Pretendard-Regular.a97abcb6f03db9c6720f.woff",
@@ -19,11 +19,11 @@
     "static/media/slick.woff": "/Reverseinha_team_front/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Reverseinha_team_front/index.html",
     "main.0ab01ad9.css.map": "/Reverseinha_team_front/static/css/main.0ab01ad9.css.map",
-    "main.4c87d1f6.js.map": "/Reverseinha_team_front/static/js/main.4c87d1f6.js.map",
+    "main.c0d4927c.js.map": "/Reverseinha_team_front/static/js/main.c0d4927c.js.map",
     "870.a5679818.chunk.js.map": "/Reverseinha_team_front/static/js/870.a5679818.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0ab01ad9.css",
-    "static/js/main.4c87d1f6.js"
+    "static/js/main.c0d4927c.js"
   ]
 }
