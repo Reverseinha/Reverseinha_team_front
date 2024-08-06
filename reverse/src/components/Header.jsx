@@ -101,7 +101,7 @@ const Header = () => {
       <Navigation>
         <ul>
           <li>
-            <Link to="/" className={path === "/" ? "active" : ""}>
+            <Link to="/Reverseinha_team_front" className={path === "/Reverseinha_team_front" ? "active" : ""}>
               홈
             </Link>
           </li>
