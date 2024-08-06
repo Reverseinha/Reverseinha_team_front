@@ -32,18 +32,18 @@ const StyledCalendar = styled(Calendar)`
     background-color: #cccccc !important; /* 회색으로 선택된 날짜 표시 */
   }
   .react-calendar__tile--selected {
-    background-color: #ccff99 !important;
+    background-color: #83d135 !important;
   }
   .react-calendar__tile--full-completion {
     background-color: #003366 !important; /* 가장 진한 파란색 */
     color: white !important;
   }
   .react-calendar__tile--high-completion {
-    background-color: #336699 !important; /* 중간 정도의 파란색 */
+    background-color: #0c85fd !important; /* 중간 정도의 파란색 */
     color: white !important;
   }
   .react-calendar__tile--medium-completion {
-    background-color: #6699cc !important; /* 중간 정도의 파란색 */
+    background-color: #61acf8 !important; /* 중간 정도의 파란색 */
   }
   .react-calendar__tile--low-completion {
     background-color: #99ccff !important; /* 가장 연한 파란색 */
@@ -616,8 +616,8 @@ const Sidebar = ({ onDateChange, diaryWritten }) => {
             - {severity === "고위험"
               ? "고위험"
               : severity === "중위험"
-              ? "중위험"
-              : "저위험"}
+                ? "중위험"
+                : "저위험"}
           </RiskLabel>
         </CustomPlanHeader>
         <CustomPlanDescription>

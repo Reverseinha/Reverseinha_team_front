@@ -83,7 +83,7 @@ const ResultModal = ({ score }) => {
   };
 
   const handleDiaryClick = () => {
-    navigate('/record');
+    navigate('/record'); // Correct path for diary
   };
 
   return (
