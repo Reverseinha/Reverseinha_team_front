@@ -4,28 +4,30 @@ import Jointext from '../components/Login/Jointext';
 import Loginbutton from '../components/Login/Loginbutton';
 import Logintext from '../components/Login/LoginText';
 import Logininput from '../components/Login/Logininput';
-import { useNavigate } from 'react-router-dom';
 import axiosInstance from './axiosInstance';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 35rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 35rem;
 `;
 
 const Errormessage = styled.div`
   color: red;
   margin-bottom: 10px;
-  font-size: 13px;
+  font-size:13px;
 `;
 
 const Login = () => {
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const navigate = useNavigate(); // Use navigate for redirection
+
+    // Initialize the useNavigate hook
+    const navigate = useNavigate();
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -42,7 +44,9 @@ const Login = () => {
             const { access_token } = response.data;
             localStorage.setItem('access_token', access_token);
             setError('');
-            navigate('/'); // Redirect to homepage
+
+            // Use navigate to redirect
+            navigate('/Reverseinha_team_front');
         } catch (error) {
             let errorMessage = '로그인에 실패했습니다. 다시 시도해주세요.';
             if (error.response && error.response.data) {
@@ -69,6 +73,6 @@ const Login = () => {
             <Jointext />
         </Wrapper>
     );
-};
+}
 
 export default Login;
