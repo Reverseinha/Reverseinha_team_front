@@ -64,9 +64,9 @@ const RetestModal = ({ result }) => {
       <Modal>
         <Scoretitle>나의 외로움과 사회적 고립 수준은? </Scoretitle>
         <Title result={result}>{result}</Title>
-        <Description>테스트 결과, {result}에 해당합니다. 
-            <br/>현재 상태에 맞는 상담/건강 관리 계획을 제공합니다.</Description>
-        <CloseButton href="/">시작화면으로 돌아가기</CloseButton>
+        <Description>테스트 결과, {result}에 해당합니다.
+          <br />현재 상태에 맞는 상담/건강 관리 계획을 제공합니다.</Description>
+        <CloseButton href="/Reverseinha_team_front">시작화면으로 돌아가기</CloseButton>
         <Footer>긴급전화: 사회적 고립가구 지원센터 전화번호(02-6353-0200)</Footer>
       </Modal>
     </Overlay>
