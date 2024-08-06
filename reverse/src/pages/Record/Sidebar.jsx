@@ -35,18 +35,18 @@ const StyledCalendar = styled(Calendar)`
     background-color: #83d135 !important;
   }
   .react-calendar__tile--full-completion {
-    background-color: #003366 !important; /* 가장 진한 파란색 */
+    background-color: #0079f1 !important; /* 가장 진한 파란색 */
     color: white !important;
   }
   .react-calendar__tile--high-completion {
-    background-color: #0c85fd !important; /* 중간 정도의 파란색 */
+    background-color: #2891fa !important; /* 중간 정도의 파란색 */
     color: white !important;
   }
   .react-calendar__tile--medium-completion {
-    background-color: #61acf8 !important; /* 중간 정도의 파란색 */
+    background-color: #61acf8 !important;
   }
   .react-calendar__tile--low-completion {
-    background-color: #99ccff !important; /* 가장 연한 파란색 */
+    background-color: #99ccff !important;
   }
 `;
 

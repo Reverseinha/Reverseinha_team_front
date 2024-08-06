@@ -206,7 +206,7 @@ const Community = () => {
   const handleSort = (order) => {
     setSortOrder(order);
     setIsDropdownOpen(false);
-  
+
     if (order === '인기순') {
       axiosInstance
         .get('/with/community/search/?sort=popular')
@@ -237,7 +237,7 @@ const Community = () => {
 
   const handleLoginConfirm = () => {
     setLoginPromptIsOpen(false);
-    window.location.href = '/login';
+    navigate('/login'); // navigate를 사용하여 페이지 이동
   };
 
   return (
@@ -285,13 +285,3 @@ const Community = () => {
 };
 
 export default Community;
-
-
-
-
-
-
-
-
-
-

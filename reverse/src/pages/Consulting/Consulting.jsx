@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';  // useNavigate 임포트
 import SearchSide from './SearchSide';
 import Modal from 'react-modal';
 import '../../components/Fonts.css';
@@ -221,11 +221,11 @@ const Consulting = () => {
     inPersonConsultation: false,
   });
 
-  const navigate = useNavigate();
+  const navigate = useNavigate();  // useNavigate 초기화
 
   const handleLoginConfirm = () => {
     setLoginPromptIsOpen(false);
-    window.location.href = '/login';
+    navigate('/login');  // window.location.href 대신 navigate 사용
   };
 
   const handleFilterChange = (newFilters) => {
@@ -236,7 +236,7 @@ const Consulting = () => {
     if (!localStorage.getItem('access_token')) {
       setLoginPromptIsOpen(true);
     } else {
-      navigate('/consulting/application');
+      navigate('/consulting/application');  // useNavigate로 경로 이동
     }
   };
 
@@ -248,10 +248,10 @@ const Consulting = () => {
       : true;
 
     const matchesFreeAndPremium =
-      (filters.free && filters.premium) || 
+      (filters.free && filters.premium) ||
       (!filters.free && !filters.premium) ||
-      (filters.free && consultant.prices.message === '무료') || 
-      (filters.premium && consultant.prices.message !== '무료'); 
+      (filters.free && consultant.prices.message === '무료') ||
+      (filters.premium && consultant.prices.message !== '무료');
 
     const matchesSearchTerm =
       consultant.title.includes(filters.searchTerm) ||
@@ -265,65 +265,65 @@ const Consulting = () => {
     );
   });
 
-return (
-  <ConsultingContainer>
-    <SearchSide onFilterChange={handleFilterChange} />
-    <ResultSide>
-      <ResultHeader>상담 서비스 / 청년 멘토링 찾기</ResultHeader>
-      <ResultBorder />
-      <Result>
-        {filteredData.map((consultant) => (
-          <ResultItem key={consultant.id}>
-            <ResultContent>
-              <ResultImage src={consultant.imgSrc} alt={consultant.title} />
-              <ResultDetails>
-                <ResultTitle>{consultant.title}</ResultTitle>
-                <Highlight>{consultant.type}</Highlight>
-                <ResultDescription>{consultant.description}</ResultDescription>
-              </ResultDetails>
-            </ResultContent>
-            <Prices>
-              <Price onClick={handlePriceClick}>
-                <MessageIconWrapper>
-                  <PriceIcon src={MessageIconImage} alt="Message" /> {/* 수정된 부분 */}
-                </MessageIconWrapper>
-                <PriceText>문자상담: {consultant.prices.message}</PriceText>
-              </Price>
-              <Price onClick={handlePriceClick}>
-                <CallIconWrapper>
-                  <PriceIcon src={CallIconImage} alt="Call" /> {/* 수정된 부분 */}
-                </CallIconWrapper>
-                <PriceText>전화상담: {consultant.prices.call}</PriceText>
-              </Price>
-              {consultant.availableForLocation && (
+  return (
+    <ConsultingContainer>
+      <SearchSide onFilterChange={handleFilterChange} />
+      <ResultSide>
+        <ResultHeader>상담 서비스 / 청년 멘토링 찾기</ResultHeader>
+        <ResultBorder />
+        <Result>
+          {filteredData.map((consultant) => (
+            <ResultItem key={consultant.id}>
+              <ResultContent>
+                <ResultImage src={consultant.imgSrc} alt={consultant.title} />
+                <ResultDetails>
+                  <ResultTitle>{consultant.title}</ResultTitle>
+                  <Highlight>{consultant.type}</Highlight>
+                  <ResultDescription>{consultant.description}</ResultDescription>
+                </ResultDetails>
+              </ResultContent>
+              <Prices>
                 <Price onClick={handlePriceClick}>
-                  <LocationIconWrapper>
-                    <PriceIcon src={LocationIconImage} alt="Location" /> {/* 수정된 부분 */}
-                  </LocationIconWrapper>
-                  <PriceText>현장: {consultant.prices.site}</PriceText>
+                  <MessageIconWrapper>
+                    <PriceIcon src={MessageIconImage} alt="Message" />
+                  </MessageIconWrapper>
+                  <PriceText>문자상담: {consultant.prices.message}</PriceText>
                 </Price>
-              )}
-            </Prices>
-          </ResultItem>
-        ))}
-      </Result>
-    </ResultSide>
+                <Price onClick={handlePriceClick}>
+                  <CallIconWrapper>
+                    <PriceIcon src={CallIconImage} alt="Call" />
+                  </CallIconWrapper>
+                  <PriceText>전화상담: {consultant.prices.call}</PriceText>
+                </Price>
+                {consultant.availableForLocation && (
+                  <Price onClick={handlePriceClick}>
+                    <LocationIconWrapper>
+                      <PriceIcon src={LocationIconImage} alt="Location" />
+                    </LocationIconWrapper>
+                    <PriceText>현장: {consultant.prices.site}</PriceText>
+                  </Price>
+                )}
+              </Prices>
+            </ResultItem>
+          ))}
+        </Result>
+      </ResultSide>
 
-    {loginPromptIsOpen && (
-      <Modal
-        isOpen={loginPromptIsOpen}
-        onRequestClose={() => setLoginPromptIsOpen(false)}
-        contentLabel="로그인 필요"
-        ariaHideApp={false}
-        style={customStyles}
-      >
-        <h2>로그인이 필요합니다</h2>
-        <p>상담 신청을 위해 로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?</p>
-        <Button onClick={handleLoginConfirm}>로그인 하러가기</Button>
-      </Modal>
-    )}
-  </ConsultingContainer>
-);
+      {loginPromptIsOpen && (
+        <Modal
+          isOpen={loginPromptIsOpen}
+          onRequestClose={() => setLoginPromptIsOpen(false)}
+          contentLabel="로그인 필요"
+          ariaHideApp={false}
+          style={customStyles}
+        >
+          <h2>로그인이 필요합니다</h2>
+          <p>상담 신청을 위해 로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?</p>
+          <Button onClick={handleLoginConfirm}>로그인 하러가기</Button>
+        </Modal>
+      )}
+    </ConsultingContainer>
+  );
 };
 
 export default Consulting;

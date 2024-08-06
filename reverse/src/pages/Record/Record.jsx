@@ -6,7 +6,7 @@ import "react-quill/dist/quill.snow.css";
 import axiosInstance from "../axiosInstance";
 import Modal from "react-modal";
 import "react-calendar/dist/Calendar.css";
-import Sidebar from "./Sidebar"; 
+import Sidebar from "./Sidebar";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -103,7 +103,7 @@ const EditButton = styled(Button)`
 
   &:hover {
     background-color: ${({ isEditing }) =>
-      isEditing ? "#218838" : "#1f66b3"};
+    isEditing ? "#218838" : "#1f66b3"};
   }
 `;
 
@@ -136,7 +136,6 @@ const Separator = styled.div`
   margin: 1rem 0;
   align-self: center;
 `;
-
 
 const modules = {
   toolbar: [
@@ -179,6 +178,8 @@ const Record = () => {
   const [diaryWritten, setDiaryWritten] = useState(false); // 일기 작성 여부 추적
   const [helpModalIsOpen, setHelpModalIsOpen] = useState(false); // 도움말 모달 상태
   const quillRef = useRef(null); // Quill 에디터 참조
+
+  const navigate = useNavigate(); // useNavigate 훅 사용
 
   useEffect(() => {
     // 로그인 여부 확인
@@ -377,7 +378,7 @@ const Record = () => {
 
   const handleLoginConfirm = () => {
     setLoginPromptIsOpen(false);
-    window.location.href = "/login";
+    navigate("/login"); // navigate를 사용하여 페이지 이동
   };
 
   useEffect(() => {
@@ -389,8 +390,8 @@ const Record = () => {
       <GlobalStyle isDimmed={isDialogVisible || loginPromptIsOpen || helpModalIsOpen} />
       <Container>
         <SubContainer>
-          <Sidebar 
-            onDateChange={handleDateChange} 
+          <Sidebar
+            onDateChange={handleDateChange}
             diaryWritten={diaryWritten}
           />
           <Content>
