@@ -39,7 +39,7 @@ const StyledCalendar = styled(Calendar)`
     color: white !important;
   }
   .react-calendar__tile--high-completion {
-    background-color: #2891fa !important; /* 중간 정도의 파란색 */
+    background-color: #0c85fd !important; /* 중간 정도의 파란색 */
     color: white !important;
   }
   .react-calendar__tile--medium-completion {
@@ -223,37 +223,45 @@ const Sidebar = ({ onDateChange, diaryWritten }) => {
     return `local-${Math.random().toString(36).substr(2, 9)}`;
   };
 
+  // 로그인 여부 확인
+  const isUserLoggedIn = () => {
+    const token = localStorage.getItem("access_token");
+    return !!token; // 토큰이 존재하면 true, 아니면 false
+  };
+
   // 마이페이지와 동일하게 설문 점수를 가져옵니다.
   useEffect(() => {
-    axiosInstance
-      .get("/with/mypage/")
-      .then((response) => {
-        const data = response.data;
-        const surveyScore = data.survey_score || 0;
-        setScore(surveyScore);
+    if (isUserLoggedIn()) {
+      axiosInstance
+        .get("/with/mypage/")
+        .then((response) => {
+          const data = response.data;
+          const surveyScore = data.survey_score || 0;
+          setScore(surveyScore);
 
-        // 설문 점수에 따라 심각도 설정
-        if (surveyScore >= 0 && surveyScore <= 30) {
-          setSeverity("저위험"); // Low risk
-        } else if (surveyScore > 30 && surveyScore <= 60) {
-          setSeverity("중위험"); // Medium risk
-        } else if (surveyScore > 60 && surveyScore <= 100) {
-          setSeverity("고위험"); // High risk
-        }
-        setErrorMessage(""); // 오류 메시지 초기화
-        console.log(`Survey score fetched: ${surveyScore}`);
-      })
-      .catch((error) => {
-        console.error("설문 점수를 가져오는 데 실패했습니다:", error);
-        setErrorMessage(
-          "설문 점수를 가져오는 데 문제가 발생했습니다. 나중에 다시 시도해 주세요."
-        );
-        if (error.response) {
-          console.error("응답 데이터:", error.response.data);
-          console.error("응답 상태:", error.response.status);
-          console.error("응답 헤더:", error.response.headers);
-        }
-      });
+          // 설문 점수에 따라 심각도 설정
+          if (surveyScore >= 0 && surveyScore <= 30) {
+            setSeverity("저위험"); // Low risk
+          } else if (surveyScore > 30 && surveyScore <= 60) {
+            setSeverity("중위험"); // Medium risk
+          } else if (surveyScore > 60 && surveyScore <= 100) {
+            setSeverity("고위험"); // High risk
+          }
+          setErrorMessage(""); // 오류 메시지 초기화
+          console.log(`Survey score fetched: ${surveyScore}`);
+        })
+        .catch((error) => {
+          console.error("설문 점수를 가져오는 데 실패했습니다:", error);
+          setErrorMessage(
+            "설문 점수를 가져오는 데 문제가 발생했습니다. 나중에 다시 시도해 주세요."
+          );
+          if (error.response) {
+            console.error("응답 데이터:", error.response.data);
+            console.error("응답 상태:", error.response.status);
+            console.error("응답 헤더:", error.response.headers);
+          }
+        });
+    }
   }, []);
 
   // Fetch and set custom plans based on severity
@@ -264,6 +272,11 @@ const Sidebar = ({ onDateChange, diaryWritten }) => {
   // 현재 보이는 월의 목표 데이터를 불러오기 위한 함수
   const fetchGoalsForMonth = async (activeStartDate) => {
     try {
+      if (!isUserLoggedIn()) {
+        console.log("User not logged in, skipping goal fetch.");
+        return;
+      }
+
       const year = activeStartDate.getFullYear();
       const month = activeStartDate.getMonth() + 1; // 월은 0부터 시작하므로 +1
       console.log(`Fetching goals for year: ${year}, month: ${month}`);
@@ -297,18 +310,25 @@ const Sidebar = ({ onDateChange, diaryWritten }) => {
 
   // 컴포넌트가 마운트될 때 현재 보이는 월의 목표 데이터를 가져옴
   useEffect(() => {
-    const currentMonthStartDate = new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      1
-    );
-    fetchGoalsForMonth(currentMonthStartDate);
+    if (isUserLoggedIn()) {
+      const currentMonthStartDate = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        1
+      );
+      fetchGoalsForMonth(currentMonthStartDate);
+    }
   }, [date]);
 
   // 선택된 날짜에 따른 목표 및 일기 가져오기
   useEffect(() => {
     const fetchGoalsAndDiary = async (selectedDate) => {
       try {
+        if (!isUserLoggedIn()) {
+          console.log("User not logged in, skipping goal and diary fetch.");
+          return;
+        }
+
         console.log(
           `Fetching goals and diary for date: ${selectedDate
             .toISOString()
@@ -348,7 +368,9 @@ const Sidebar = ({ onDateChange, diaryWritten }) => {
       }
     };
 
-    fetchGoalsAndDiary(date); // 한국 시간 기준의 오늘 날짜에 대한 데이터를 가져옵니다.
+    if (isUserLoggedIn()) {
+      fetchGoalsAndDiary(date); // 한국 시간 기준의 오늘 날짜에 대한 데이터를 가져옵니다.
+    }
   }, [date]);
 
   // 날짜 변경 핸들러
@@ -359,11 +381,18 @@ const Sidebar = ({ onDateChange, diaryWritten }) => {
 
   // 달력이 보여주는 월이 변경될 때 목표 데이터를 불러오기
   const handleActiveStartDateChange = ({ activeStartDate }) => {
-    fetchGoalsForMonth(activeStartDate);
+    if (isUserLoggedIn()) {
+      fetchGoalsForMonth(activeStartDate);
+    }
   };
 
   // 목표 완료 상태 변경
   const handleGoalChange = async (id) => {
+    if (!isUserLoggedIn()) {
+      console.log("User not logged in, skipping goal update.");
+      return;
+    }
+
     const goalToUpdate = selectedDateGoals.find((goal) => goal.id === id);
 
     // 업데이트된 상태로 로컬 목표를 설정
@@ -400,6 +429,11 @@ const Sidebar = ({ onDateChange, diaryWritten }) => {
 
   // 새 목표 추가
   const handleAddGoal = async () => {
+    if (!isUserLoggedIn()) {
+      console.log("User not logged in, skipping add goal.");
+      return;
+    }
+
     if (newGoal.trim()) {
       const newGoalObj = {
         id: generateUniqueId(), // Generate unique ID for local goal
@@ -437,6 +471,11 @@ const Sidebar = ({ onDateChange, diaryWritten }) => {
 
   // 목표 삭제
   const handleDeleteGoal = async (id) => {
+    if (!isUserLoggedIn()) {
+      console.log("User not logged in, skipping delete goal.");
+      return;
+    }
+
     try {
       await axiosInstance.delete(`/with/calendar/goal/${id}/delete/`);
       const updatedGoals = selectedDateGoals.filter((goal) => goal.id !== id);

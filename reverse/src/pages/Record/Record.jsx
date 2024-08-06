@@ -185,9 +185,13 @@ const Record = () => {
     // 로그인 여부 확인
     const token = localStorage.getItem("access_token");
     if (!token) {
+      console.log("User not logged in. Prompting login.");
       setLoginPromptIsOpen(true);
+    } else {
+      console.log("User is logged in. Fetching diary.");
+      fetchDiary(currentDate);
     }
-  }, []);
+  }, [currentDate]);
 
   const fetchDiary = async (date) => {
     // 날짜에 해당하는 일기를 불러오는 함수
@@ -212,17 +216,16 @@ const Record = () => {
       }
     } catch (error) {
       console.error("Failed to fetch diary:", error);
+      // Handle 401 Unauthorized error
+      if (error.response && error.response.status === 401) {
+        setLoginPromptIsOpen(true); // Re-open login prompt
+      }
     }
   };
-
-  useEffect(() => {
-    fetchDiary(currentDate); // 현재 날짜로 일기 불러오기
-  }, [currentDate]);
 
   const handleDateChange = (date) => {
     // 날짜 변경 시 일기 불러오기
     setCurrentDate(date);
-    fetchDiary(date);
   };
 
   const handleSubmit = (e) => {
@@ -382,7 +385,10 @@ const Record = () => {
   };
 
   useEffect(() => {
-    fetchSurveyScore();
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      fetchSurveyScore();
+    }
   }, []);
 
   return (
