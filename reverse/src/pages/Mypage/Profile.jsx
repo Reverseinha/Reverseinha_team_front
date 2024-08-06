@@ -75,7 +75,7 @@ const Profile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('access_token'); // 토큰 삭제
-    navigate('/'); // 홈 페이지로 이동
+    navigate('/Reverseinha_team_front'); // 홈 페이지로 이동
   };
 
   return (
